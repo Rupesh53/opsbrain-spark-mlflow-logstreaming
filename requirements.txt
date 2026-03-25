@@ -1,0 +1,6 @@
+# pyspark
+mlflow
+fastapi
+uvicorn
+pandas
+scikit-learn

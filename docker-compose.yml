@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+
+  mlflow:
+    build:
+      context: .
+      dockerfile: Dockerfile.mlflow
+    container_name: mlflow
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: api
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    depends_on:
+      - mlflow
+
+  log-producer:
+    image: python:3.10
+    container_name: log-producer
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: python src/log_producer.py
+
+  spark-stream:
+    build:
+      context: .
+      dockerfile: Dockerfile.spark
+    container_name: spark-stream
+    working_dir: /app
+    command: python3 src/stream_job.py
+    volumes:
+      - .:/app
+    depends_on:
+      - log-producer
+
+  spark-predict:
+    build:
+      context: .
+      dockerfile: Dockerfile.spark
+    container_name: spark-predict
+    working_dir: /app
+    command: python3 src/stream_predict.py
+    volumes:
+      - .:/app
+    depends_on:
+      - spark-stream
