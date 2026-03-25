@@ -256,11 +256,7 @@ docker-compose logs spark-stream
 docker-compose restart api
 ```
 
----
 
-## 💬 Resume / LinkedIn Highlight
-
-> Built a real-time MLOps pipeline using Apache Spark Structured Streaming and MLflow, enabling continuous log processing and failure prediction via API and streaming.
 
 ---
 
