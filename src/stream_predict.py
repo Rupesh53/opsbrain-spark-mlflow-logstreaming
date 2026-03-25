@@ -3,7 +3,7 @@ import mlflow.pyfunc
 
 spark = SparkSession.builder.appName("Predict").getOrCreate()
 
-model = mlflow.pyfunc.load_model("runs:/<RUN_ID>/failure-model")
+model = mlflow.pyfunc.load_model("runs:/f0ea092371b74f63904d7f12643eb2fa/failure-model")
 
 df = spark.readStream.format("parquet").load("data/stream_processed")
 

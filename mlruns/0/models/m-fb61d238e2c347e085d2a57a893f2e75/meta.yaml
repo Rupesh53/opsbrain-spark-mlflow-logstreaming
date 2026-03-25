@@ -1,0 +1,10 @@
+artifact_location: file:///app/mlruns/0/models/m-fb61d238e2c347e085d2a57a893f2e75/artifacts
+creation_timestamp: 1774413474913
+experiment_id: '0'
+last_updated_timestamp: 1774413489086
+model_id: m-fb61d238e2c347e085d2a57a893f2e75
+model_type: null
+name: failure-model
+source_run_id: f0ea092371b74f63904d7f12643eb2fa
+status: 2
+status_message: null
